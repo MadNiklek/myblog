@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- END NAV -->
+<!-- <img src="media/{{ article.thumb }}" width="80%" height="100%"  alt="img"> -->
+{% if not user.is_authenticated %}
+<header id="smth" class="jumbotron my-4">
+  <h1 >A Warm Welcome!</h1>
+  <p class="lead">This is my website for testing posting system, which is created by pure framework called Django.
+    You can create an account in the top right corner using the Sign Up button.
+    Or if you have one already, you can just simply use Log In.
+    After that, you are free to create Articles and delete them.
+    Have fun.
+  </p>
+  <p class="lead">To stop seeing this message press a button below or log in.</p>
+  <a id="toberomoved" onclick="remove_but();" class="btn btn-primary btn-lg">Call to action!</a>
+</header>
+{% endif %}
+<div class="row ">
+  <!-- <div class="card position-static"  style="max-width:350px; background-color:lightgrey">
+    <div class="card-body border-bottom-0 " style="background-color:lightgrey" >
+        <img class="card-img-top"  src="media/{{ article.thumb }}" alt="Card image ">
+        <h5 class="card-title bg-secondary text-white border border-info rounded" style="padding:3px" >{{ article.title }}
+        {{ article.snippet }}</h5>
+        <br><small>{{ article.date }}</small>
+    </div>
+  </div> -->
+
+
+
+  {% for article in articles %}
+  <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 ">
+
+
+    <div class="tile mx-auto ">
+                        <div class="wrapper text-center " style="overflow:hidden">
+                            <b ><div class="header mines">{{ article.title }}</div></b>
+                            {% if artlength > 30 %}
+                            <br><br><br>
+                            {%endif%}
+                            <div class="banner-img mx-auto d-flex justify-content-around" style="overflow:hidden">
+                                <img src="{{ article.thumb.url }}" class="rounded align-self-center mx-auto" style="height:300px;width:auto" id="qwe">
+                            </div>
+                            <div class="mx-auto .text-dark" id="asddsa" style="color:#696969">
+                              {{ article.snippet }}
+                            </div>
+                            <div class="footer mx-auto" style="height:50px;width:90%; margin-top:-10px;">
+                                <!-- <a href="{% url 'articles:detail' slug=article.slug %}" class="Cbtn Cbtn-primary">View</a> -->
+                                <a href="{% url 'articles:detail' slug=article.slug %}" class="btn btn-info float-left w-100 h-100" ><div style="margin-top:7px"> View </div></a>
+                                <form action="{% url 'articles:delete' slug=article.slug %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{ article.slug }}">
+                                    <input type="submit" class="btn btn-danger float-right h-100 w-100"  style="margin-top:7px; height:150%" value="Delete">
+                                </form>
+                            </div>
+                            <div class="meta float-right" style="padding-top:10px">By {{article.author}}, at {{ article.date }}</div>
+                        </div>
+                    </div>
+                    </div>
+
+
+{% endfor %}
+<script type="text/javascript">
+
+    var mylist = document.getElementsByClassName("mines");
+    var bol = 0
+    for (var i = 0; i < mylist.length; i++) {
+      bol = mylist[i].innerHTML.length
+      if (bol <= 34){
+         document.getElementsByClassName("mines")[i].innerHTML +="<br><br>";
+      }
+  }
+
+  // alert( document.getElementsByClassName("mines")[4].innerHTML.length)
+
+</script>
+</div>
+{% endblock %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- <div class="container">
+<div class="page-header" style="padding:5%; background: url(/media/{{ article.thumb }}); background-size: contain;">
+    <h1><b class="bg-light border border-primary rounded">{{article.title}}</b></h1>
+      <hr class="my-4">
+    <p style="font-size:100%" class="bg-light border border-primary rounded">{{article.body}}</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'articles:list' %}" role="button">Pls take me back!</a>
+    <figure class="figure">
+      <figcaption class="figure-caption text-right">{{ article.date }}</figcaption>
+    </figure>
+</div>
+</div> -->
+
+<div class="jumbotron">
+  <div style="overflow:hidden; " class="mx-auto d-flex justify-content-around">
+    <img src="media/{{ article.thumb }}"  class="mx-auto rounded" style="max-height:400px" alt="Image">
+</div>
+<h1 class="display-5" style="margin-top:15px">{{article.title}}</h1>
+
+  <p class="my-4">{{article.body}}.</p>
+
+  <hr class="lead">
+  <p>By {{article.author}}, {{ article.date }}</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'articles:list' %}" role="button">Go back</a>
+  </p>
+</div>
+
+
+{% endblock %}

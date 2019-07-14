@@ -1,0 +1,62 @@
+  {% extends 'base.html' %}
+  {%block content%}
+    <!-- <div class="create-article">
+        <form class="site-form" action="{% url 'articles:create'%}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit"  value="Create">
+        </form>
+    </div> -->
+
+
+
+  <!-- <div class="create-article">
+      <form class="site-form" action="/create" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+<input type="text" name="title" maxlength="100" required="" id="id_title">
+<textarea name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+<input type="text" name="slug" maxlength="50" required="" id="id_slug">
+<input type="file" name="thumb" accept="image/*" id="id_thumb">
+        <input type="submit" value="Create">
+      </form>
+  </div> -->
+
+
+
+  <!-- Default form subscription -->
+  <form class=" bg-light text-center border border-light p-5" action="/create" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+      <p class="h4 mb-4">Post</p>
+
+      <p>Fill out forms below, to create an article.</p>
+
+
+      <input type="text" id="defaultSubscriptionFormPassword"  class="form-control mb-4" name="title" maxlength="100" required="" id="id_title" placeholder="Title">
+
+      <!-- <input type="email" id="defaultSubscriptionFormEmail" class="form-control mb-4" placeholder="E-mail"> -->
+
+      <div class="md-form">
+        <textarea name="body" id="form103" id="id_body" placeholder="Text" class="md-textarea form-control" rows="3"></textarea>
+      </div>
+
+
+<input type="text" name="slug" style="margin-top: 24px" class="form-control mb-4" maxlength="50" id="id_slug" placeholder="Slug">
+
+<input type="file" name="thumb" class="form-control-file mb-4" style="padding-bottom:10px;" accept="image/*" id="id_thumb">
+
+      <!-- Sign in button -->
+      <input class="btn btn-info btn-block" type="submit" value="Create">
+
+
+  </form>
+  <!-- Default form subscription -->
+
+
+
+
+
+
+
+
+
+  {% endblock %}
